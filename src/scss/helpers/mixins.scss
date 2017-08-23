@@ -1,0 +1,66 @@
+@mixin child-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+@mixin square($size) {
+  @include size($size, $size);
+}
+@mixin absolute-top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@mixin link {
+  & {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+@mixin button($p-width, $p-height, $bg-color) {
+  padding: $p-height $p-width;
+  border: 1px solid $bg-color;
+  border-radius: $p-width;
+  cursor: pointer;
+  &:hover {
+    color: #fff;
+    background-color: lighten($bg-color, 10%);
+  }
+  &:active {
+    color: #fff;
+    background-color: $bg-color;
+  }
+}
+@mixin btn-disabled {
+  border-color: $light-gray !important;
+  color: $light-gray !important;
+  background-color: #fff !important;
+  cursor: default !important;
+}
+@mixin placeholder-style {
+  ::-webkit-input-placeholder { @content; }
+  ::-moz-placeholder { @content; } /* firefox 19+ */
+  :-ms-input-placeholder { @content; } /* Internet Explorer 10+ */
+  :-moz-placeholder { @content; } /* firefox 14-18 */
+}
+@mixin text-overflow-ellipsis {
+  word-wrap: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

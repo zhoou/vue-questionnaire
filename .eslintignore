@@ -1,0 +1,4 @@
+src/**/*.js
+build/*.js
+config/*.js
+server/**/*.js

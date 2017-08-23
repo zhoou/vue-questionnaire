@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'icon';
+  src: url('/static/fonts/iconfont.eot');
+  /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  /* IE9*/
+  src:url('/static/fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+  /* IE6-IE8 */
+  url('/static/fonts/iconfont.woff') format('woff'),
+  /* chrome、firefox */
+   url('/static/fonts/iconfont.ttf') format('truetype'),;
+}
+
+.iconfont {
+  font-family: 'icon' !important;
+  cursor: pointer;
+  -webkit-user-select: none;
+}
+@font-face {
+  font-family: 'siyuanheiti';
+  src: url('/static/fonts/siyuanheiti.eot');
+  /* IE9*/
+  src:url('/static/fonts/siyuanheiti.eot?#iefix') format('embedded-opentype'),
+  /* IE6-IE8 */
+  url('/static/fonts/siyuanheiti.woff') format('woff'),
+  /* chrome、firefox */
+  url('/static/fonts/siyuanheiti.ttf') format('truetype'),
+  /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url( '/static/fonts/siyuanheiti.svg#webfont') format('svg');
+  /* iOS 4.1- */
+}
