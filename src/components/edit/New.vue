@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="new-wrap">
     <div class="new">
       <i class="icon-file-alt icon-4x"></i>
@@ -10,6 +10,7 @@
 
 <script>
 export default {
+  name: 'VEditNew',
   methods: {
     setMode () {
       window.sessionStorage.setItem('edit-mode', 'create')

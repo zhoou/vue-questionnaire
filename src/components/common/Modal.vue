@@ -1,22 +1,17 @@
 <template>
-  <div role="dialog"
-    v-bind:class="{
-      'modal':true
-    }"
-    v-if="show"
-    >
-    <div v-bind:class="{'modal-dialog':true}" v-bind:style="{width: optionalWidth}">
+  <div role="dialog" :class="{'modal':true}" v-if="show">
+    <div :class="{'modal-dialog':true}" :style="{width: optionalWidth}">
       <div v-if="structure.header" class="modal-content">
         <div class="modal-header">
-          <span class="close" @click="close">&times;</span>
+          <span class="close" @click.stop="close">&times;</span>
           <h4 class="modal-title">{{title}}</h4>
         </div>
         <div v-if="structure.body" class="modal-body">
           <slot name="modal-body"></slot>
         </div>
         <div v-if="structure.footer" class="modal-footer">
-          <button type="button" class="btn btn-default" @click="close">{{ cancelText }}</button>
-          <button type="button" class="btn btn-primary" @click="callback">{{ okText }}</button>
+          <button type="button" class="btn btn-default" @click.stop="close">{{ cancelText }}</button>
+          <button type="button" class="btn btn-primary" @click.stop="callback">{{ okText }}</button>
         </div>
       </div>
     </div>
@@ -25,6 +20,7 @@
 
 <script>
 export default {
+  name: 'VModal',
   props: {
     structure: {
       type: Object,

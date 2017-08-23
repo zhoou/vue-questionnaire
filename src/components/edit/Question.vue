@@ -22,14 +22,14 @@
             <!-- 选项工具框 -->
             <ul class="option-panel">
               <li
-                @click="optionPositionFront(qIndex, index)"
+                @click.stop="optionPositionFront(qIndex, index)"
                 class="iconfont">↑</li>
               <li
-                @click="optionPositionBack(qIndex, index)"
+                @click.stop="optionPositionBack(qIndex, index)"
                 class="iconfont">↓</li>
               <li
                 v-show="question.answers.length > 2"
-                @click="deleteOption(qIndex, index)"
+                @click.stop="deleteOption(qIndex, index)"
                 class="iconfont"><i class="icon-remove"></i></li>
             </ul>
           </div>
@@ -53,16 +53,16 @@
       <div class="order">Q{{ qIndex + 1 }}</div>
       <ul class="opertions">
         <li
-          @click="questionPositionFront(qIndex)"
+          @click.stop="questionPositionFront(qIndex)"
           class="iconfont"><i class="icon-angle-up"></i></li>
         <li
-          @click="questionPositionBack(qIndex)"
+          @click.stop="questionPositionBack(qIndex)"
           class="iconfont"><i class="icon-angle-down"></i></li>
         <li
-          @click="copyQuestion(qIndex)"
+          @click.stop="copyQuestion(qIndex)"
           class="iconfont"><i class="icon-copy"></i></li>
         <li
-          @click="deleteQuestion(qIndex)"
+          @click.stop="deleteQuestion(qIndex)"
           class="iconfont"><i class="icon-trash"></i></li>
       </ul>
     </div>
@@ -71,6 +71,7 @@
 
 <script>
 export default {
+  name: 'VEditQuestion',
   props: {
     question: {
       type: Object,

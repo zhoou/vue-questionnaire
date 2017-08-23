@@ -102,7 +102,6 @@ export default {
       .then(result => {
         if (result.code === 0) {
           this.qnData = result.data
-          console.log(this.qnData)
         }
         if (result.code === -2) {
           this.$router.push({ path: '/login' })
@@ -114,8 +113,7 @@ export default {
     },
     inArray (arr, val) {
       if (arr && arr.length > 0) {
-        let result = arr.some(item => val === item)
-        return result
+        return arr.some(item => val === item)
       } else {
         return false
       }

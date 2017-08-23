@@ -8,7 +8,7 @@
         <ul class="panel">
           <li :key="item.id" v-for="item in routeItems">
             <router-link class="link" :to="item.link">
-              <i :class="['iconfont', item.icon]"></i>{{ item.text }}
+              <i :class="item.icon"></i>{{ item.text }}
             </router-link>
           </li>
         </ul>
@@ -22,6 +22,7 @@
 
 <script>
 export default {
+  name: 'VContent',
   data () {
     return {
       userName: '',
@@ -60,7 +61,7 @@ export default {
         this.userName = result.userName
       }
       if (result.code === -1) {
-        this.$route.router.go({ path: '/login' })
+        this.$router.push({ path: '/login' })
       }
     })
     .catch(err => {

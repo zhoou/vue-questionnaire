@@ -1,7 +1,7 @@
 <template>
   <div
     v-show="show"
-    v-bind:class="{
+    :class="{
       'alert': true,
       'alert-success':(type == 'success'),
       'alert-warning':(type == 'warning'),
@@ -10,16 +10,18 @@
       'top': (placement === 'top'),
       'top-right': (placement === 'top-right')
     }"
-    v-bind:style="{width:width}"
+    :style="{width:width}"
     role="alert">
-    <span v-show="dismissable" class="alert-dismissible"><span class="close"
-      @click="show = false">&times;</span></span>
+    <span v-show="dismissable" class="alert-dismissible">
+      <span class="close" @click.stop="show = false">&times;</span>
+    </span>
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'VAlert',
   props: {
     type: {
       type: String

@@ -12,7 +12,7 @@
               :key="index"
               is="question"
               v-for="(q, index) in questions"
-              track-by="$index"
+              :track-by="index"
               :q-index="index"
               :question="q"
               :class="['question', q.type]"
@@ -78,6 +78,7 @@ import Modal from '../common/Modal'
 import uuid from 'uuid'
 
 export default {
+  name: 'VEditEdit',
   data () {
     let editMode
     if (!window.sessionStorage.getItem('edit-mode')) {

@@ -5,16 +5,14 @@
       <h1 class="title">{{ msg }}</h1>
     </div>
     <div class="home">
-      <a
-        @click="signout"
-        :class="{ disabled: isLoading }"
-        class="link">登出</a>
+      <a @click.stop="signout" :class="{ disabled: isLoading }" class="link">登出</a>
     </div>
   </header>
 </template>
 
 <script>
 export default {
+  name: 'VLayoutHeader',
   data () {
     return {
       msg: '微型问卷调查平台',
@@ -38,6 +36,10 @@ export default {
         if (result.code === 0) {
           this.$router.push({ path: '/login' })
         }
+      })
+      .catch((err) => {
+        this.isLoading = false
+        console.log(err)
       })
     }
   }

@@ -9,7 +9,7 @@
           <div class="content fl">
             <div class="form-wrap">
               <div class="type">
-                <span :class="{active:isLoginModel}" @click.stop="changeMode('login')">登录</span>/<span :class="{active:!isLoginModel}" @click.stop="changeMode('register')">注册</span>
+                <span :class="{active:isLoginModel}" @click.stop="changeMode('login')">登录</span> / <span :class="{active:!isLoginModel}" @click.stop="changeMode('register')">注册</span>
               </div>
               <template v-if="isLoginModel">
                 <div class="input-item">
@@ -72,8 +72,6 @@ export default {
       loginTipMsg: ''
     }
   },
-  watch: {
-  },
   methods: {
     showPassword () {
       this.isShowPwd = !this.isShowPwd
@@ -85,13 +83,12 @@ export default {
     btnLogin () {
       let self = this
       if (!self.isLoading) {
-        self.isLoading = true
         // 输入验证
         let isCheck = self.checkEmailAndPwd(self.emails, self.password)
         if (!isCheck) {
-          self.isLoading = false
           return
         }
+        self.isLoading = true
         // 登录验证
         window.fetch('/login', {
           method: 'post',
@@ -104,10 +101,10 @@ export default {
           }),
           credentials: 'same-origin'
         })
-        .then(function (response) {
+        .then((response) => {
           return response.json()
         })
-        .then(function (result) {
+        .then((result) => {
           if (result.code === 0) {
             self.$router.push('/platform/questionare')
           }
@@ -120,6 +117,10 @@ export default {
             }, 5000)
           }
         })
+        .catch((err) => {
+          self.isLoading = false
+          console.log(err)
+        })
       }
     },
     // 注册
@@ -131,7 +132,7 @@ export default {
           return
         }
         if (self.emails === '') {
-          self.loginTipMsg = '密码不能为空！'
+          self.loginTipMsg = '邮箱不能为空！'
           return
         }
         if (self.password === '') {
@@ -155,10 +156,10 @@ export default {
           }),
           credentials: 'same-origin'
         })
-        .then(function (response) {
+        .then((response) => {
           return response.json()
         })
-        .then(function (result) {
+        .then((result) => {
           if (result.code === 0) {
             self.$router.push('/platform/questionare')
           }
